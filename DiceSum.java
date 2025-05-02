@@ -22,27 +22,27 @@ public class DiceSum extends DieRoll {
         logger.info("DiceSum initialized with two DieRoll objects.");
     }
 
-     // Ghi đè phương thức makeRoll
-     @Override
-     public RollResult makeRoll() {
-         logger.info("makeRoll() called in DiceSum.");
- 
-         RollResult result1 = r1.makeRoll();
-         logger.fine("First roll result: " + result1);
- 
-         RollResult result2 = r2.makeRoll();
-         logger.fine("Second roll result: " + result2);
- 
-         RollResult combined = result1.andThen(result2);
-         logger.info("Combined roll result: " + combined);
- 
-         return combined;
-     }
+    // Ghi đè phương thức makeRoll
+    @Override
+    public RollResult makeRoll() {
+        logger.info("makeRoll() called in DiceSum.");
+
+        RollResult result1 = r1.makeRoll();
+        logger.fine("First roll result: " + result1);
+
+        RollResult result2 = r2.makeRoll();
+        logger.fine("Second roll result: " + result2);
+
+        RollResult combined = result1.andThen(result2);
+        logger.info("Combined roll result: " + combined);
+
+        return combined;
+    }
 
     // ✅ Helper method: Tính tổng điểm từ makeRoll()
     public int getTotalRollValue() {
         RollResult result = makeRoll();
-        return result.getTotal() * 2; // Giả định RollResult có phương thức getTotal()
+        return result.getTotal(); // Giả định RollResult có phương thức getTotal()
     }
 
     // ✅ Thông báo cải tiến rõ ràng hơn cho người dùng
